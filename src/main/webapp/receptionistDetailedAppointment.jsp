@@ -38,46 +38,63 @@
 </head>
 <body>
 
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<!-- Container wrapper -->
+	<div class="container-fluid">
+		<!-- Toggle button -->
+		<button
+				class="navbar-toggler"
+				type="button"
+				data-mdb-toggle="collapse"
+				data-mdb-target="#navbarLeftAlignExample"
+				aria-controls="navbarLeftAlignExample"
+				aria-expanded="false"
+				aria-label="Toggle navigation"
+		>
+			<i class="fas fa-bars"></i>
+		</button>
 
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-					aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="receptionist">Lans Medics</a>
-			</div>
-			<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav navbar-right">
-					<li class="active"><a href="#">Dashboard</a></li>
-					<li><a href="updateReceptionistProfile">Edit Profile</a>
-					<li><a href="logout">Logout</a></li>
-				</ul>
-				<form class="navbar-form navbar-right">
-					<input type="text" class="form-control" placeholder="Search...">
-				</form>
-			</div>
+		<!-- Collapsible wrapper -->
+		<div class="collapse navbar-collapse" id="navbarLeftAlignExample">
+			<a class="navbar-brand" href="receptionist"><b>CarePath</b></a>
+			<!-- Left links -->
+			<ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+				<li class="nav-item">
+					<a class="nav-link active" aria-current="page" href="#">Dashboard</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="updateReceptionistProfile">Edit Profile</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="logout"
+					>Logout</a
+					>
+				</li>
+			</ul>
+			<!-- Left links -->
 		</div>
-	</nav>
+		<!-- Collapsible wrapper -->
+	</div>
+	<!-- Container wrapper -->
+</nav>
+
 
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-3 sidebar">
 				<ul class="nav nav-sidebar">
-					<li class="active">
-
-						<div class="row intro">
-							<div class="col-sm-12 col-md-6 col-lg-4">
-								<div class="">
-									<img class="profilePic" src="media/receptionist.png">
+					<div style="display: block">
+						<div class="row">
+							<div class="col-sm-12">
+								<div style="margin-top: 20px">
+									<img height="100" width="100" src="media/receptionist.png">
 								</div>
 							</div>
-							<div class="col-sm-12 col-md-6 col-lg-8 info">
-								<br> <span class="name"><%= receptionist.getFirstName() +" " + receptionist.getLastName() %></span><br>
+						</div>
+
+						<div class="row">
+							<div class="col-sm-12">
+								<br> <h5 class="text-primary"><b><%= receptionist.getFirstName() +" " + receptionist.getLastName() %></b></h5><br>
 								<img src="media/gender.png"><span class="details">
 									<%= receptionist.getGender() +", " + receptionist.getAge() %></span><br> <img
 									src="media/degree.png"><span class="degree"> Receptionist</span><br>
@@ -85,8 +102,11 @@
 									<%= receptionist.getAddress() %></span>
 							</div>
 						</div>
+					</div>
+<%--					<li class="active">--%>
 
-					</li>
+<%--				--%>
+<%--					</li>--%>
 					<li class="topic"><span class="upcoming">Unallocated
 							Appointment</span> <% ArrayList<Appointment> unallocatedAppointments = arrayList.get(0);
 			        	for(int i=0; i<unallocatedAppointments.size(); i++)

@@ -34,7 +34,7 @@ com.lanmedics.lanmedics.modal.Appointment"%>
     <!-- Material Design Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/css/mdb.min.css" rel="stylesheet">
 
-    <title>Admin Dashboard - Lans Medical</title>
+    <title>Admin Dashboard - CarePath</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -55,7 +55,7 @@ com.lanmedics.lanmedics.modal.Appointment"%>
 
         <!-- Collapsible wrapper -->
         <div class="collapse navbar-collapse" id="navbarLeftAlignExample">
-            <a class="navbar-brand">LanX-Medics</a>
+            <a class="navbar-brand"><b>CarePath</b></a>
             <!-- Left links -->
             <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
                 <li class="nav-item">
@@ -84,13 +84,13 @@ com.lanmedics.lanmedics.modal.Appointment"%>
             <ul class="nav nav-sidebar">
                 <div style="display: block">
 
-                <div class="row">
-                    <div class="col-md-12">
-                        <img height="100" width="100" src="media/admin.png">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <img height="100" width="100" src="media/admin.png">
+                        </div>
                     </div>
-                </div>
 
-                <div class="row">
+                   <div class="row">
                     <div class="col-md-12">
                         <h5 class="text-secondary"><b><%= admin.getFirstName() +" " + admin.getLastName() %></b></h5><br>
 
@@ -125,38 +125,38 @@ com.lanmedics.lanmedics.modal.Appointment"%>
 
 
         <div class="col-sm-9 col-sm-offset-3 main" id="home">
-            <h1 class="page-header">Dashboard</h1>
+            <h6 class="page-header" style="margin-top: 60px"><b>Dashboard</b></h6>
             <div class="row">
                 <div class="col-sm-3">
-                    <div class="card">
-                        <div class="cardImage">
-                            <img src="media/patient.png">
+                    <div class="card bg-info">
+                        <div class="card-header text-center">
+                            <img src="media/patient.png" width="50" height="50">
                         </div>
-                        <div class="cardText"><%=patients.size() %> Patients</div>
+                        <div class="card-text text-center"><%=patients.size() %> Patients</div>
                     </div>
                 </div>
                 <div class="col-sm-3">
-                    <div class="card">
-                        <div class="cardImage">
-                            <img src="media/doctor.png" style="width:128px">
+                    <div class="card bg-info">
+                        <div class="card-header text-center">
+                            <img src="media/doctor.png" width="50" height="50">
                         </div>
-                        <div class="cardText"><%=doctors.size() %> Doctors</div>
+                        <div class="card-text text-center"><%=doctors.size() %> Doctors</div>
                     </div>
                 </div>
                 <div class="col-sm-3">
-                    <div class="card">
-                        <div class="cardImage">
-                            <img src="media/admin.png">
+                    <div class="card bg-info">
+                        <div class="card-header text-center">
+                            <img src="media/admin.png" width="50" height="50">
                         </div>
-                        <div class="cardText"><%=staffs.size() %> Staff</div>
+                        <div class="card-text text-center"><%=staffs.size() %> Staff</div>
                     </div>
                 </div>
                 <div class="col-sm-3">
-                    <div class="card">
-                        <div class="cardImage">
-                            <img src="media/appointment.png">
+                    <div class="card bg-info">
+                        <div class="card-header text-center">
+                            <img src="media/appointment.png" width="50" height="50">
                         </div>
-                        <div class="cardText"><%=appointments.size() %> Appointments</div>
+                        <div class="card-text text-center"><%=appointments.size() %> Appointments</div>
                     </div>
                 </div>
             </div>
