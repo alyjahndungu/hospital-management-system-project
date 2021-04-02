@@ -24,29 +24,48 @@
 <body>
 <% Patient patient = (Patient)request.getAttribute("patient"); %>
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- Container wrapper -->
     <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed"
-                    data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-                    aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span> <span
-                    class="icon-bar"></span> <span class="icon-bar"></span> <span
-                    class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="patient">Central Medic Center</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="patient">Dashboard</a></li>
-                <li><a href="updatePatientProfile">Edit Profile</a></li>
-                <li><a href="logout">Logout</a></li>
+        <!-- Toggle button -->
+        <button
+                class="navbar-toggler"
+                type="button"
+                data-mdb-toggle="collapse"
+                data-mdb-target="#navbarLeftAlignExample"
+                aria-controls="navbarLeftAlignExample"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+        >
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Collapsible wrapper -->
+        <div class="collapse navbar-collapse" id="navbarLeftAlignExample">
+            <a class="navbar-brand" href="patient"><b>CarePath</b></a>
+            <!-- Left links -->
+            <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+                 <li class="nav-item ">
+                    <a class="nav-link text-secondary" href="openBookAppointment"><b>Book
+                        Appointment</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="patient">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="updatePatientProfile">Edit Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="logout"
+                    >Logout</a
+                    >
+                </li>
             </ul>
-            <form class="navbar-form navbar-right">
-                <input type="text" class="form-control" placeholder="Search...">
-            </form>
+            <!-- Left links -->
         </div>
+        <!-- Collapsible wrapper -->
     </div>
+    <!-- Container wrapper -->
 </nav>
 
 <div class="container-fluid">
@@ -54,11 +73,10 @@
     <div class="row">
         <div class="col-sm-3 sidebar">
             <ul class="nav nav-sidebar">
-                <li class="active">
-
-                    <div class="row intro">
-                        <div class="col-md-12">
-                            <div class="">
+                <div style="display: block">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div style="margin-top: 20px">
                                 <img height="100" width="100" src="media/user.png">
                             </div>
                         </div>
@@ -66,8 +84,7 @@
 
                     <div class="row">
                         <div class="col-sm-12">
-
-                            <br> <span class="text-secondary"><b><%= patient.getFirstName() +" " + patient.getLastName() %></b></span><br>
+                            <br> <h5 class="text-primary"><b><%= patient.getFirstName() + " " + patient.getLastName() %></b></h5><br>
                             <img src="media/gender.png"><span class="details">
 									<%= patient.getGender() +", " + patient.getAge() %></span><br> <img
                                 src="media/bloodGroup.png"><span class="blood"> <%= patient.getBloodGroup() %></span><br>
@@ -75,11 +92,10 @@
 									<%= patient.getAddress() %></span>
                         </div>
                     </div>
+                </div>
 
-                </li>
                 <% ArrayList<ArrayList<Appointment>> arrayList = (ArrayList<ArrayList<Appointment>>)request.getAttribute("appointments"); %>
-                <li class=""><a href="openBookAppointment">Book
-                    Appointment</a></li>
+
                 <li class="topic"><span class="upcoming">Upcoming
 							Appointment</span> <% ArrayList<Appointment> appointments = arrayList.get(0);
                     for(int i=0; i<appointments.size(); i++)
@@ -150,8 +166,13 @@
             </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 main">
-            <h4 class="page-header">Book Appointment</h4>
-            <form class="form-horizontal" method="post" action="bookAppointment">
+            <div class="row">
+                <div class="col-md">
+                </div>
+                <div class="col-md-4">
+                    <h3 class="page-header text-primary text-center" style="margin-top: 20px"><b>Booking Appointment</b></h3>
+                      <hr>
+                    <form class="form-horizontal" method="post" action="bookAppointment">
                 <div class="form-group">
                     <label class="form-label">Patient
                         Name</label>
@@ -165,7 +186,7 @@
                 <div class="form-group">
                     <label  class="form-label">Appointment
                         Title</label>
-                    <div class="col-sm-6">
+                    <div class="form-group">
                         <input type="text" class="form-control"
                                placeholder="Acute Stomach Ache" name="title" required>
                     </div>
@@ -173,7 +194,7 @@
                 <div class="form-group">
                     <label class="form-label">Preferred
                         Date of Appointment</label>
-                    <div class="col-sm-6">
+                    <div class="form-group">
                         <input type="date" class="form-control"
                                placeholder="Date" name="preferredDate"
                                value="<%= DateUtils.getStringFromDate(System.currentTimeMillis()) %>">
@@ -181,7 +202,7 @@
                 </div>
                 <div class="form-group">
                     <label class="form-label">Symptoms</label>
-                    <div class="col-sm-6">
+                    <div class="form-group">
 							<textarea class="form-control" rows="2"
                                       placeholder="chest pain, fatigue, hallucination, swelling"
                                       name="symptoms"></textarea>
@@ -190,19 +211,21 @@
                 <div class="form-group">
                     <label for="disease" class="form-label">Suspected
                         Disease</label>
-                    <div class="col-sm-6">
+                    <div class="form-group">
                         <input type="text" class="form-control" id="disease"
                                placeholder="Tuberculosis, Malaria, Acne, Diarrhea"
                                name="disease">
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <div class="col-sm-offset-6 col-sm-2">
-                        <button type="submit" class="btn btn-default">Submit</button>
-                    </div>
-                </div>
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-primary btn-block mb-4">Book Appointment</button>
+
             </form>
+
+        </div>
+        <div class="col-md">
+        </div>
         </div>
     </div>
 </div>

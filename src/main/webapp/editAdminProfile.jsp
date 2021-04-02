@@ -180,12 +180,10 @@
                                id="password" placeholder="password">
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="">
-                        <button type="submit" class="btn btn-primary btn-floating mx-1">Submit</button>
-                    </div>
-                </div>
-            </form>
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-primary btn-block mb-4">Submit</button>
+
+             </form>
                 </div>
                 <div class="col-md">
                 </div>

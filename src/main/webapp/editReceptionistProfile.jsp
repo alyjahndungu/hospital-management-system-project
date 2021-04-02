@@ -51,7 +51,7 @@
 			<!-- Left links -->
 			<ul class="navbar-nav ml-auto mb-2 mb-lg-0">
 				<li class="nav-item">
-					<a class="nav-link active" aria-current="page" href="#">Dashboard</a>
+					<a class="nav-link active" aria-current="page" href="receptionist">Dashboard</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="updateReceptionistProfile">Edit Profile</a>
@@ -95,12 +95,12 @@
 						</div>
 					</div>
 					<li class="active">
-						<li class="topic"><span class="upcoming">Unallocated
-							Appointment</span> <% ArrayList<Appointment> unallocatedAppointments = arrayList.get(0);
+						<li style="margin-top: 20px"><span class="upcoming"><b>Unallocated
+					Appointment</b></span> <% ArrayList<Appointment> unallocatedAppointments = arrayList.get(0);
 			        	for(int i=0; i<unallocatedAppointments.size(); i++)
 			        	{ Appointment appointment = unallocatedAppointments.get(i);
 	        			%>
-						<form class="form-signin" action="receptionistAppointmentDetails"
+						<form  action="receptionistAppointmentDetails"
 							method="post">
 							<input type="hidden" class="form-control" name="appointmentId"
 								value="<%= appointment.getId() %>" />
@@ -127,7 +127,7 @@
 						        	
 				        %>
 				    </li>
-					<li class="topic">Allocated Appointment <% ArrayList<Appointment> allocatedAppointments = arrayList.get(1);
+					<li class="topic"><b>Allocated Appointment</b> <% ArrayList<Appointment> allocatedAppointments = arrayList.get(1);
 			        	for(int i=0; i<allocatedAppointments.size(); i++)
 			        	{ Appointment appointment = allocatedAppointments.get(i);
 	        			%>
@@ -162,44 +162,50 @@
 			</div>
 
 			<div class="col-sm-9 col-sm-offset-3 main">
-				<h1 class="page-header" style="text-align: center">
-					 Edit Profile 
-				</h1>
-				<h4 class="sub-header">Personal Information</h4>
+
+				<div class="row">
+					<div class="col-md">
+						<h1 class="page-header text-secondary" style="text-align: center; margin-top: 50px">
+							Edit Profile
+						</h1>
+					</div>
+					<div class="col-md">
+				<h5 class="sub-header " style="margin-top: 20px">Personal Information</h5>
 				<form class="form-horizontal" action="editReceptionistProfile"
 					method="post">
-					<div class="form-group">
-						<label  class="col-sm-2 control-label">First
-							Name</label>
-						<div class="col-sm-10">
-							<p class="form-control-static"><%= receptionist.getFirstName() %></p>
+					<div class="row mb-4">
+						<div class="col">
+							<div class="form-group">
+								<label class="form-label text-primary">Full
+									Names</label>
+								<div class="form-outline mb-4 ">
+									<p class="form-control-static"><%= receptionist.getFirstName() + " " + receptionist.getLastName() %></p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<label class="form-label text-primary">Gender</label>
+								<div class="form-outline mb-4">
+									<p class="form-control-static"><%= receptionist.getGender() %></p>
+								</div>
+							</div>
 						</div>
 					</div>
+
 					<div class="form-group">
-						<label class="col-sm-2 control-label">Last
-							Name</label>
-						<div class="col-sm-10">
-							<p class="form-control-static"><%= receptionist.getLastName() %></p>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">Gender</label>
-						<div class="col-sm-10">
-							<p class="form-control-static"><%= receptionist.getGender() %></p>
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="date" class="col-sm-2 control-label">Date Of
+						<label for="date" class="form-label text-primary">Date Of
 							Birth</label>
-						<div class="col-sm-10">
+						<div class="form-outline">
 							<input type="date" class="form-control" name="dob" id="date"
 								placeholder="Date" value="<%= receptionist.getStringDob() %>">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="phoneNumber" class="col-sm-2 control-label">Phone
+						<label for="phoneNumber" class="form-label text-primary">Phone
 							Number</label>
-						<div class="col-sm-10">
+						<div class="form-outline">
 							<input type="tel" class="form-control"
 								name="contactNumber" id="phoneNumber"
 								placeholder="+91 9521113802"
@@ -207,42 +213,36 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-2 control-label">Address</label>
-						<div class="col-sm-10">
+						<label class="form-label text-primary">Address</label>
+						<div class="form-outline">
 							<textarea class="form-control" rows="2" name="address"
-								placeholder="BH-3, The LNMIIT"> <%= receptionist.getAddress() %></textarea>
+								> <%= receptionist.getAddress() %></textarea>
 						</div>
 					</div>
 					<h4 class="sub-header">Account Information</h4>
 					<div class="form-group">
-						<label for="userName" class="col-sm-2 control-label">User
-							Name</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="userName"
+						<label for="userName" class="form-label text-primary">
+							Email Address</label>
+						<div class="form-outline">
+							<input type="email" class="form-control" id="userName"
 								placeholder="ternstone@gmail.com" value="<%= receptionist.getEmail() %>">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="password" class="col-sm-2 control-label">Password</label>
-						<div class="col-sm-10">
+						<label for="password" class="form-label text-primary">Password</label>
+						<div class="form-outline">
 							<input type="password" class="form-control" name="password"
 								id="password" placeholder="password">
 						</div>
 					</div>
-					<!-- 	<div class="form-group">
-						<label for="emailAddress" class="col-sm-2 control-label">Email
-							Address</label>
-						<div class="col-sm-10">
-							<input type="string" class="form-control" id="emailAddress"
-								placeholder="rakeshsharma.y15@gmail.com" value="">
-						</div>
-					</div>-->
-					<div class="form-group">
-						<div class="col-sm-offset-6 col-sm-2">
-							<button type="submit" class="btn btn-default">Submit</button>
-						</div>
-					</div>
+					<!-- Submit button -->
+					<button type="submit" class="btn btn-primary btn-block mb-4">Submit</button>
+
 				</form>
+					</div>
+					<div class="col-md">
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

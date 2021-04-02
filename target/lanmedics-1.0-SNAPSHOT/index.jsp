@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JSP - Hello World</title>
+    <title>CarePath</title>
     <link rel="stylesheet" href="css/style.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
@@ -31,7 +31,7 @@
     <img
             src="media/undraw_medicine_b1ol.svg"
             class="w-100"
-             height="780rem"
+             height="850rem"
             alt="Sample"
     />
     <div class="mask" style="background-color: rgba(0, 0, 0, 0.6)">

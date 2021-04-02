@@ -60,7 +60,7 @@
 			<!-- Left links -->
 			<ul class="navbar-nav ml-auto mb-2 mb-lg-0">
 				<li class="nav-item">
-					<a class="nav-link active" aria-current="page" href="#">Dashboard</a>
+					<a class="nav-link active" aria-current="page" href="receptionist">Dashboard</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="updateReceptionistProfile">Edit Profile</a>
@@ -107,8 +107,8 @@
 
 <%--				--%>
 <%--					</li>--%>
-					<li class="topic"><span class="upcoming">Unallocated
-							Appointment</span> <% ArrayList<Appointment> unallocatedAppointments = arrayList.get(0);
+					<li style="margin-top: 20px"><span class="upcoming"><b>Unallocated
+						Appointment</b></span> <% ArrayList<Appointment> unallocatedAppointments = arrayList.get(0);
 			        	for(int i=0; i<unallocatedAppointments.size(); i++)
 			        	{ Appointment appointment = unallocatedAppointments.get(i);
 	        			%>
@@ -146,11 +146,11 @@
 						</form> <%  }
 						        	
 				        %></li>
-					<li class="topic">Allocated Appointment <% ArrayList<Appointment> allocatedAppointments = arrayList.get(1);
+					<li class="topic"><b>Allocated Appointment</b> <% ArrayList<Appointment> allocatedAppointments = arrayList.get(1);
 			        	for(int i=0; i<allocatedAppointments.size(); i++)
 			        	{ Appointment appointment = allocatedAppointments.get(i);
 	        			%>
-						<form class="form-signin" action="receptionistAppointmentDetails"
+						<form class="form" action="receptionistAppointmentDetails"
 							method="post">
 							<input type="hidden" class="form-control" name="appointmentId"
 								value="<%= appointment.getId() %>" />
@@ -172,7 +172,7 @@
 													<b><%= appointment.getTitle() %> </b><br>
 													<% Doctor doctor = appointment.getDoctor();
 													if(doctor==null){
-												%>Wating for doctor approval
+												%>Waiting for doctor approval
 													<% }else{ %>
 													<%= doctor.getFirstName() %>
 													<% } %>
@@ -190,7 +190,7 @@
 				</ul>
 			</div>
 			<div class="col-sm-9 col-sm-offset-3 main">
-				<h1 class="page-header"><%=detailedAppointment.getTitle()%></h1>
+				<h3 class="page-header text-primary" style="margin-top: 20px"><b><%=detailedAppointment.getTitle()%></b></h3>
 				<div class="content">
 					<div class="row ">
 						<div class="col-sm-3">
@@ -212,7 +212,7 @@
 							<%
 								} else {
 							%>
-							Wating for doctor approval
+							Waiting for doctor approval
 							<%
 								}
 							%>
@@ -254,7 +254,7 @@
 								</select>
 							</div>
 							<br>
-							<div class="col-sm-4">
+							<div class="col-sm-4" style="margin-top: 10px">
 								<b>Allocated Date </b>
 							</div>
 							<div class="col-sm-8">
@@ -264,7 +264,7 @@
 							</div>
 						</div>
 						<br>
-						<button class="btn btn-lg btn-primary btn-block" type="submit">Save</button>
+						<button class="btn btn-lg btn-primary btn-block" type="submit">Allocate</button>
 					</form>
 					<br>
 					<%} %>
@@ -278,7 +278,7 @@
 							<input
 									type="hidden" name="requestDispatcher"
 									value="receptionistAppointmentDetails" /> 
-							<button type="submit" class="send btn btn-success">Close</button>
+							<button type="submit" class="send btn btn-danger">Close</button>
 						</form>
 						</div>
 					<%}else { %>

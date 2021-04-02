@@ -105,7 +105,7 @@
 			        	for(int i=0; i<unallocatedAppointments.size(); i++)
 			        	{ Appointment appointment = unallocatedAppointments.get(i);
 	        			%>
-						<form class="form-signin" action="receptionistAppointmentDetails"
+						<form class="form" action="receptionistAppointmentDetails"
 							method="post">
 							<input type="hidden" class="form-control" name="appointmentId"
 								value="<%= appointment.getId() %>" />

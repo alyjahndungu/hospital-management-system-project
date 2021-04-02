@@ -34,45 +34,63 @@
 </head>
 <body>
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- Container wrapper -->
     <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed"
-                    data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-                    aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span> <span
-                    class="icon-bar"></span> <span class="icon-bar"></span> <span
-                    class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="patient">Central Medic Center</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="#">Dashboard</a></li>
-                <li><a href="updateDoctorProfile">Edit Profile</a>
-                <li><a href="logout">Logout</a></li>
+        <!-- Toggle button -->
+        <button
+                class="navbar-toggler"
+                type="button"
+                data-mdb-toggle="collapse"
+                data-mdb-target="#navbarLeftAlignExample"
+                aria-controls="navbarLeftAlignExample"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+        >
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Collapsible wrapper -->
+        <div class="collapse navbar-collapse" id="navbarLeftAlignExample">
+            <a class="navbar-brand" href="doctor"><b>CarePath</b></a>
+            <!-- Left links -->
+            <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="doctor">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="updateDoctorProfile">Edit Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="logout"
+                    >Logout</a
+                    >
+                </li>
             </ul>
-            <form class="navbar-form navbar-right">
-                <input type="text" class="form-control" placeholder="Search...">
-            </form>
+            <!-- Left links -->
         </div>
+        <!-- Collapsible wrapper -->
     </div>
+    <!-- Container wrapper -->
 </nav>
+
 
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-3 sidebar">
             <ul class="nav nav-sidebar">
-                <li class="active">
-
-                    <div class="row intro">
-                        <div class="col-sm-12 col-md-6 col-lg-4">
-                            <div class="">
-                                <img class="profilePic" src="media/doctor.png">
+                <div style="display: block">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div style="margin-top: 20px">
+                                <img height="100" width="100" src="media/doctor.png">
                             </div>
                         </div>
-                        <div class="col-sm-12 col-md-6 col-lg-8 info">
-                            <br> <span class="name"><%= doctor.getFirstName() +" " + doctor.getLastName() %></span><br>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <br> <h5 class="text-primary"><b><%= doctor.getFirstName() +" " + doctor.getLastName() %></b></h5><br>
                             <img src="media/gender.png"><span class="details">
 									<%= doctor.getGender() +", " + doctor.getAge() %></span><br> <img
                                 src="media/degree.png"><span class="blood"> <%= doctor.getDegree() %></span><br>
@@ -80,16 +98,19 @@
 									<%= doctor.getSpecialization() %></span>
                         </div>
                     </div>
+                </div>
+                <%--<li class="active">--%>
+                <%--					--%>
 
-                </li>
-                <li class="topic"><span class="upcoming">Upcoming
+                <%--</li>--%>
+                <li style="margin-top: 50px"><span class="upcoming">Upcoming
 							Appointment</span>
                     <%
                         ArrayList<Appointment> upcomingAppointments = arrayList.get(0);
                         for(int i=0; i<upcomingAppointments.size(); i++)
                         { Appointment appointment = upcomingAppointments.get(i);
                     %>
-                    <form class="form-signin" action="doctorAppointmentDetails"
+                    <form class="form" action="doctorAppointmentDetails"
                           method="post">
                         <input type="hidden" class="form-control" name="appointmentId"
                                value="<%= appointment.getId() %>" />
@@ -152,22 +173,22 @@
             </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 main">
-            <h1 class="page-header">Dashboard</h1>
+            <h5 class="page-header" style="margin-top: 50px">Dashboard</h5>
             <div class="row">
                 <div class="col-sm-4">
-                    <div class="card">
-                        <div class="cardImage">
-                            <img src="media/appointment.png">
+                    <div class="card bg-info">
+                        <div class="card-header text-center">
+                            <img width="50" height="50" src="media/appointment.png">
                         </div>
-                        <div class="cardText"><%= dashBoard.getNoOfAppointment() %> Appointments</div>
+                        <div class="card-text text-center"><b><%= dashBoard.getNoOfAppointment() %></b> Appointments</div>
                     </div>
                 </div>
                 <div class="col-sm-4">
-                    <div class="card">
-                        <div class="cardImage">
-                            <img src="media/patient.png">
+                    <div class="card bg-info">
+                        <div class="card-header text-center">
+                            <img width="50" height="50" src="media/patient.png">
                         </div>
-                        <div class="cardText"><%= dashBoard.getPatientCount() %> Patients Treated</div>
+                        <div class="card-text text-center"><b><%= dashBoard.getPatientCount() %></b> Patients Treated</div>
                     </div>
                 </div>
                 <!-- 				<div class="col-sm-4">
@@ -179,11 +200,11 @@
                                         </div>
                                     </div>-->
                 <div class="col-sm-4">
-                    <div class="card">
-                        <div class="cardImage">
-                            <img src="media/edit.png">
+                    <div class="card bg-info">
+                        <div class="card-header text-center">
+                            <img width="50" height="50" src="media/edit.png">
                         </div>
-                        <div class="cardText"><%= dashBoard.getPercentProfile() %>% Profile</div>
+                        <div class="card-text text-center"><b><%= dashBoard.getPercentProfile() %>%</b> Profile</div>
                     </div>
                 </div>
             </div>

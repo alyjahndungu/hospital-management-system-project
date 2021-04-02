@@ -37,9 +37,9 @@ else{
 </head>
 <body>
 <div class="container-fluid">
-    <h1 style="text-align: center">
-        Lans-Medical
-    </h1>
+    <h4 style="text-align: center; margin-top: 20px" >
+        <b>CarePath</b> - Sign Up
+    </h4>
     <hr>
     <div class="row">
         <div class="col-md">

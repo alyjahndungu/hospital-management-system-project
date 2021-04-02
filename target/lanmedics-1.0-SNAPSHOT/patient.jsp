@@ -29,49 +29,66 @@
 </head>
 <body>
 
-
-	<nav class="navbar navbar-inverse navbar-fixed-top">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<!-- Container wrapper -->
 		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-					aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="patient">Lans Medics</a>
-			</div>
-			<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav navbar-right">
-					<li class="active"><a href="#">Dashboard</a></li>
-					<li><a href="updatePatientProfile">Edit Profile</a>
-					<li><a href="logout">Logout</a></li>
+			<!-- Toggle button -->
+			<button
+					class="navbar-toggler"
+					type="button"
+					data-mdb-toggle="collapse"
+					data-mdb-target="#navbarLeftAlignExample"
+					aria-controls="navbarLeftAlignExample"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+			>
+				<i class="fas fa-bars"></i>
+			</button>
+
+			<!-- Collapsible wrapper -->
+			<div class="collapse navbar-collapse" id="navbarLeftAlignExample">
+				<a class="navbar-brand" href="patient"><b>CarePath</b></a>
+				<!-- Left links -->
+				<ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+					<li class="nav-item ">
+						<a class="nav-link text-secondary" href="openBookAppointment"><b>Book
+							Appointment</b></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link active" aria-current="page" href="patient">Dashboard</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="updatePatientProfile">Edit Profile</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="logout"
+						>Logout</a
+						>
+					</li>
 				</ul>
-				<form class="navbar-form navbar-right">
-					<input type="text" class="form-control" placeholder="Search...">
-				</form>
+				<!-- Left links -->
 			</div>
+			<!-- Collapsible wrapper -->
 		</div>
+		<!-- Container wrapper -->
 	</nav>
 
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-3 sidebar">
 				<ul class="nav nav-sidebar">
-					<li class="active">
-
+					<div style="display: block">
 						<div class="row">
 							<div class="col-sm-12">
-								<div class="">
+								<div style="margin-top: 20px">
 									<img height="100" width="100" src="media/user.png">
 								</div>
 							</div>
-
 						</div>
+
 						<div class="row">
 							<div class="col-sm-12">
-								<br> <span class="text-secondary"><b><%= patient.getFirstName() +" " + patient.getLastName() %></b></span><br>
+								<br> <h5 class="text-primary"><b><%= patient.getFirstName() + " " + patient.getLastName() %></b></h5><br>
 								<img src="media/gender.png"><span class="details">
 									<%= patient.getGender() +", " + patient.getAge() %></span><br> <img
 									src="media/bloodGroup.png"><span class="blood"> <%= patient.getBloodGroup() %></span><br>
@@ -79,9 +96,8 @@
 									<%= patient.getAddress() %></span>
 							</div>
 						</div>
-					</li>
-					<li class="topic"><a href="openBookAppointment"><b>Book
-						Appointment</b></a></li>
+					</div>
+
 					<li class="topic"><span class="upcoming">Upcoming
 							Appointment</span> <% ArrayList<Appointment> appointments = arrayList.get(0);
 			        	for(int i=0; i<appointments.size(); i++)
@@ -134,7 +150,7 @@
 													<b><%= appointment.getTitle() %> </b><br>
 													<% Doctor doctor = appointment.getDoctor();
 													if(doctor==null){
-												%>Wating for doctor approval
+												%>Waiting for doctor approval
 													<% }else{ %>
 													<%= doctor.getFirstName() %>
 													<% } %>
@@ -152,38 +168,38 @@
 				</ul>
 			</div>
 			<div class="col-sm-9 col-sm-offset-3 main">
-				<h1 class="page-header">Dashboard</h1>
+				<h5 class="page-header" style="margin-top: 50px">Dashboard</h5>
 				<div class="row">
 					<div class="col-sm-3">
-						<div class="card">
-							<div class="cardImage">
-								<img src="media/appointment.png">
+						<div class="card bg-secondary">
+							<div class="card-header text-center">
+								<img width="50" height="50" src="media/appointment.png">
 							</div>
-							<div class="cardText"><%= dashBoard.getNoOfAppointment() %> Appointments</div>
+							<div class="card-text text-center"> <span class="text-white"><b><%= dashBoard.getNoOfAppointment() %></b></span> Appointments</div>
 						</div>
 					</div>
 					<div class="col-sm-3">
-						<div class="card">
-							<div class="cardImage">
-								<img src="media/bmi.png">
+						<div class="card bg-secondary">
+							<div class="card-header text-center">
+								<img width="50" height="50" src="media/bmi.png">
 							</div>
-							<div class="cardText">BMI : <%= dashBoard.getBmi() %></div>
+							<div class="card-text text-center">BMI : <span class="text-white"><b><%= dashBoard.getBmi() %></b></span></div>
 						</div>
 					</div>
 					<div class="col-sm-3">
-						<div class="card">
-							<div class="cardImage">
-								<img src="media/prescription.png">
+						<div class="card bg-secondary">
+							<div class="card-header text-center">
+								<img width="50" height="50" src="media/prescription.png">
 							</div>
-							<div class="cardText"><%= dashBoard.getNoOfMedicines() %> Medicines</div>
+							<div class="card-text text-center"><span class="text-white"><b><%= dashBoard.getNoOfMedicines() %></b></span> Medicines</div>
 						</div>
 					</div>
 					<div class="col-sm-3">
-						<div class="card">
-							<div class="cardImage">
-								<img src="media/edit.png">
+						<div class="card bg-secondary">
+							<div class="card-header text-center">
+								<img width="50" height="50" src="media/edit.png">
 							</div>
-							<div class="cardText"><%= dashBoard.getPercentProfile() %>% Profile</div>
+							<div class="card-text text-center"><span class="text-white"><b><%= dashBoard.getPercentProfile() %>%</b></span> Profile</div>
 						</div>
 					</div>
 				</div>

@@ -52,14 +52,14 @@
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/js/mdb.min.js"></script>
 
-    <title>Sign In</title>
+    <title>CarePath-Sign In</title>
 </head>
 <body>
 
 <div class="container-fluid">
-    <h1 style="text-align: center">
-        Lans-Medical
-    </h1>
+    <h4  class="text-primary" style="text-align: center; margin-top: 20px" >
+       <b>CarePath</b> - Sign In
+    </h4>
     <hr>
     <div class="row">
         <div class="col-md">
@@ -69,13 +69,13 @@
             <form action="login" method="post" id="loginForm">
                 <!-- Email input -->
                 <div class="form-outline mb-4">
-                    <input type="email" name="email" id="email" class="form-control rounded-pill" />
+                    <input type="email" name="email" id="email" class="form-control " />
                     <label class="form-label" for="email">Email address</label>
                 </div>
 
                 <!-- Password input -->
                 <div class="form-outline mb-4">
-                    <input type="password" id="password" name="password" class="form-control rounded-pill" />
+                    <input type="password" id="password" name="password" class="form-control" />
                     <label class="form-label" for="password">Enter Password</label>
                 </div>
 

@@ -22,45 +22,66 @@
 <body>
 	<% Patient patient = (Patient)request.getAttribute("patient"); %>
 
-	<nav class="navbar navbar-inverse navbar-fixed-top">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<!-- Container wrapper -->
 		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-					aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="patient">Central Medic Center</a>
-			</div>
-			<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="patient">Dashboard</a></li>
-					<li class="active"><a href="#">Edit Profile</a></li>
-					<li><a href="logout">Logout</a></li>
+			<!-- Toggle button -->
+			<button
+					class="navbar-toggler"
+					type="button"
+					data-mdb-toggle="collapse"
+					data-mdb-target="#navbarLeftAlignExample"
+					aria-controls="navbarLeftAlignExample"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+			>
+				<i class="fas fa-bars"></i>
+			</button>
+
+			<!-- Collapsible wrapper -->
+			<div class="collapse navbar-collapse" id="navbarLeftAlignExample">
+				<a class="navbar-brand" href="patient"><b>CarePath</b></a>
+				<!-- Left links -->
+				<ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+					<li class="nav-item ">
+						<a class="nav-link text-secondary" href="openBookAppointment"><b>Book
+							Appointment</b></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link active" aria-current="page" href="patient">Dashboard</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="updatePatientProfile">Edit Profile</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="logout"
+						>Logout</a
+						>
+					</li>
 				</ul>
-				<form class="navbar-form navbar-right">
-					<input type="text" class="form-control" placeholder="Search...">
-				</form>
+				<!-- Left links -->
 			</div>
+			<!-- Collapsible wrapper -->
 		</div>
+		<!-- Container wrapper -->
 	</nav>
 
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-3 sidebar">
 				<ul class="nav nav-sidebar">
-					<li class="active">
-
-						<div class="row intro">
-							<div class="col-sm-12 col-md-6 col-lg-4">
-								<div class="">
-									<img class="profilePic" src="media/user.png">
+					<div style="display: block">
+						<div class="row">
+							<div class="col-sm-12">
+								<div style="margin-top: 20px">
+									<img height="100" width="100" src="media/user.png">
 								</div>
 							</div>
-							<div class="col-sm-12 col-md-6 col-lg-8 info">
-								<br> <span class="name"><%= patient.getFirstName() +" " + patient.getLastName() %></span><br>
+						</div>
+
+						<div class="row">
+							<div class="col-sm-12">
+								<br> <h5 class="text-primary"><b><%= patient.getFirstName() + " " + patient.getLastName() %></b></h5><br>
 								<img src="media/gender.png"><span class="details">
 									<%= patient.getGender() +", " + patient.getAge() %></span><br> <img
 									src="media/bloodGroup.png"><span class="blood"> <%= patient.getBloodGroup() %></span><br>
@@ -68,11 +89,10 @@
 									<%= patient.getAddress() %></span>
 							</div>
 						</div>
+					</div>
 
-					</li>
 					<% ArrayList<ArrayList<Appointment>> arrayList = (ArrayList<ArrayList<Appointment>>)request.getAttribute("appointments"); %>
-					<li class=""><a href="openBookAppointment">Book
-							Appointment</a></li>
+
 					<li class="topic"><span class="upcoming">Upcoming
 							Appointment</span> <% ArrayList<Appointment> appointments = arrayList.get(0);
 			        	for(int i=0; i<appointments.size(); i++)
@@ -143,78 +163,80 @@
 				</ul>
 			</div>
 			<div class="col-sm-9 col-sm-offset-3 main">
-				<h1 class="page-header" style="text-align: center">
-					 Edit Profile
-				</h1>
-				<h4 class="sub-header">Personal Information</h4>
+				<div class="row">
+					<div class="col-md">
+						<h4 class="page-header" style="text-align: center; margin-top: 20px">
+							Edit Profile
+						</h4>
+					</div>
+					<div class="col-md-4">
 				<form class="form-horizontal" action="editProfile" method="post">
 					<input type="hidden" name="patientId"
 						value="<%= ""+ session.getAttribute("UserID") %>" />
-					<div class="form-group">
-						<label for="firstName" class="col-sm-2 control-label">First
-							Name</label>
-						<div class="col-sm-10">
-							<p class="form-control-static"><%= patient.getFirstName() %></p>
+					<h4 class="sub-header" style="margin-top: 20px">Personal Information</h4>
+					<div class="row mb-4">
+						<div class="col">
+							<div class="form-group">
+								<label class="form-label text-primary">Full
+									Name</label>
+								<div class="form-outline mb-4 ">
+									<p class="form-control-static"><%= patient.getFirstName() + " " + patient.getLastName() %></p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<label class="form-label text-primary">Gender</label>
+								<div class="form-outline mb-4">
+									<p class="form-control-static"><%= patient.getGender() %></p>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="lastName" class="col-sm-2 control-label">Last
-							Name</label>
-						<div class="col-sm-10">
-							<p class="form-control-static"><%= patient.getLastName() %></p>
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="gender" class="col-sm-2 control-label">Gender</label>
-						<div class="col-sm-10">
-							<p class="form-control-static"><%= patient.getGender() %></p>
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="date" class="col-sm-2 control-label">Date Of
+						<label for="date" class="form-label text-primary">Date Of
 							Birth</label>
-						<div class="col-sm-10">
+						<div class="form-group">
 							<input type="date" class="form-control" name="dob" id="date"
 								placeholder="Date" value="<%= patient.getStringDob() %>">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="phoneNumber" class="col-sm-2 control-label">Phone
+						<label for="phoneNumber" class="form-label text-primary">Phone
 							Number</label>
-						<div class="col-sm-10">
+						<div class="form-group">
 							<input type="tel" class="form-control"
 								name="contactNumber" id="phoneNumber"
-								placeholder="+91 9521113802"
 								value="<%= patient.getContactNumber() %>">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="address" class="col-sm-2 control-label">Address</label>
-						<div class="col-sm-10">
-							<textarea class="form-control" name="address" rows="2"
-								placeholder="BH-3, The LNMIIT" ><%= patient.getAddress() %></textarea>
+						<label  class="form-label text-primary">Address</label>
+						<div class="form-group">
+							<textarea class="form-control" name="address" rows="2"><%= patient.getAddress() %></textarea>
 						</div>
 					</div>
 					<h4 class="sub-header">Health Information</h4>
 					<div class="form-group">
-						<label for="height" class="col-sm-2 control-label">Height</label>
-						<div class="col-sm-10">
+						<label for="height" class="form-label text-primary">Height</label>
+						<div class="form-group">
 							<input type="text" class="form-control" name="height" id="height"
 								placeholder="in cm" value="<%= patient.getHeight() %>">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="weight" class="col-sm-2 control-label">Weight</label>
-						<div class="col-sm-10">
+						<label for="weight" class="form-label text-primary">Weight</label>
+						<div class="form-group">
 							<input type="Number" class="form-control" name="weight"
 								id="weight" placeholder="in kgs"
 								value="<%= patient.getWeight() %>">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="bloodGroup" class="col-sm-2 control-label">Blood
+						<label for="bloodGroup" class="form-label text-primary">Blood
 							Group</label>
-						<div class="col-sm-10">
+						<div class="form-group">
 							<input type="text" class="form-control" name="bloodGroup"
 								id="bloodGroup" placeholder="A+"
 								value="<%= patient.getBloodGroup() %>">
@@ -222,27 +244,28 @@
 					</div>
 					<h4 class="sub-header">Account Information</h4>
 					<div class="form-group">
-						<label for="userName" class="col-sm-2 control-label">User
-							Name</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="userName"
+						<label for="userName" class="form-label text-primary">Email Address</label>
+						<div class="form-group">
+							<input type="email" class="form-control" id="userName"
 								placeholder="" value="<%= patient.getEmail() %>">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="password" class="col-sm-2 control-label">Password</label>
-						<div class="col-sm-10">
+						<label for="password" class="form-label text-primary">Password</label>
+						<div class="form-group">
 							<input type="password" class="form-control" name="password"
 								id="password" placeholder="password">
 						</div>
 					</div>
 
-					<div class="form-group">
-						<div class="col-sm-offset-6 col-sm-2">
-							<button type="submit" class="btn btn-default">Submit</button>
-						</div>
-					</div>
+					<!-- Submit button -->
+					<button type="submit" class="btn btn-primary btn-block mb-4">Submit</button>
+
 				</form>
+			</div>
+			<div class="col-md">
+			</div>
+		</div>
 			</div>
 		</div>
 	</div>

@@ -28,69 +28,91 @@
 </head>
 <body>
 
-
-	<nav class="navbar navbar-inverse navbar-fixed-top">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<!-- Container wrapper -->
 		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-					aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="labPerson">Central Medic Center</a>
-			</div>
-			<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav navbar-right">
-					<li class="active"><a href="#">Dashboard</a></li>
-					<li><a href="updateLabPersonProfile">Edit Profile</a>
-					<li><a href="logout">Logout</a></li>
+			<!-- Toggle button -->
+			<button
+					class="navbar-toggler"
+					type="button"
+					data-mdb-toggle="collapse"
+					data-mdb-target="#navbarLeftAlignExample"
+					aria-controls="navbarLeftAlignExample"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+			>
+				<i class="fas fa-bars"></i>
+			</button>
+
+			<!-- Collapsible wrapper -->
+			<div class="collapse navbar-collapse" id="navbarLeftAlignExample">
+				<a class="navbar-brand" href="labPerson"><b>CarePath</b></a>
+				<!-- Left links -->
+				<ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+
+					<li  class="nav-item">
+						<a class="nav-link text-primary" id="openLabReports"><b>Open
+							Lab Reports</b></a>
+						</li>
+					<li  class="nav-item">
+						<a class="nav-link text-secondary" id="closedLabReports"><b>Closed
+							Lab Reports</b></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link active" aria-current="page" href="labPerson">Dashboard</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="updateLabPersonProfile">Edit Profile</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="logout"
+						>Logout</a
+						>
+					</li>
 				</ul>
-				<form class="navbar-form navbar-right">
-					<input type="text" class="form-control" placeholder="Search...">
-				</form>
+				<!-- Left links -->
 			</div>
+			<!-- Collapsible wrapper -->
 		</div>
+		<!-- Container wrapper -->
 	</nav>
 
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-3 sidebar">
 				<ul class="nav nav-sidebar">
-					<li class="active">
+					<div style="display:block;">
+					      <div class="row">
+							  <div class="col-sm-12">
+								  <div style="margin-top: 20px">
+									  <img height="100" width="100" src="media/labPerson.png">
+								  </div>
+							  </div>
 
-						<div class="row intro">
-							<div class="col-sm-12 col-md-6 col-lg-4">
-								<div class="">
-									<img class="profilePic" src="media/labPerson.png">
-								</div>
-							</div>
-							<div class="col-sm-12 col-md-6 col-lg-8 info">
-								<br> <span class="name"><%= labPerson.getFirstName() +" " + labPerson.getLastName() %></span><br>
-								<img src="media/gender.png"><span class="details">
+						  </div>
+
+						<div class="row">
+							<div class="col-sm-12">
+							<br> <h5 class="text-primary"><%= labPerson.getFirstName() +" " + labPerson.getLastName() %></h5><br>
+							<img src="media/gender.png"><span class="details">
 									<%= labPerson.getGender() +", " + labPerson.getAge() %></span><br>
-								<img src="media/degree.png"><span class="degree">
+							<img src="media/degree.png"><span class="degree">
 									Lab Person</span><br> <img src="media/Location.png"><span
-									class="location"> <%= labPerson.getAddress() %></span>
-							</div>
+								class="location"> <%= labPerson.getAddress() %></span>
 						</div>
-
-					</li>
-					<li class="labReports activeReports" id="openLabReports">Open
-						Lab Reports</li>
-					<li class="labReports" id="closedLabReports">Closed Lab
-						Reports</li>
+						</div>
+					</div>
 				</ul>
 			</div>
 			<div class="col-sm-9 col-sm-offset-3 main">
-				<div class="row tableHere">
+				<div class="row">
 					<div class="col-sm-12">
 						<div id="openLabs">
+							<h6 class="text-primary" style="margin-top: 20px"><b>Open Laboratory Reports</b></h6>
 							<table class="table table-striped table-hover">
 								<thead>
 									<tr>
-										<th>Report Id :-</th>
+										<th>Report ID</th>
 										<th>Doctor Name</th>
 										<th>Lab Name</th>
 										<th>Test For</th>
@@ -105,7 +127,7 @@
 											%>
 									<tr>
 										<td class="padding-up"><%=lab.getLabId() %></td>
-										<td class="padding-up"><%=lab.getDoctor().getFirstName() %></td>
+										<td class="padding-up"><%=lab.getDoctor().getFirstName() + " " + lab.getDoctor().getLastName() %></td>
 										<td class="padding-up"><%=lab.getLabName() %></td>
 										<td class="padding-up"><%=lab.getTestFor() %></td>
 										<form action="submitLabReport" method="post">
@@ -123,10 +145,11 @@
 							</table>
 						</div>
 						<div id="closedLabs" style="display: none;">
+							<h6 class="text-secondary" style="margin-top: 20px"><b>Closed Laboratory Reports</b></h6>
 							<table class="table table-striped table-hover">
 								<thead>
 									<tr>
-										<th>Report Id :-</th>
+										<th>Report ID</th>
 										<th>Doctor Name</th>
 										<th>Lab Name</th>
 										<th>Test For</th>
@@ -141,7 +164,7 @@
 											%>
 									<tr>
 										<td><%=lab.getLabId() %></td>
-										<td><%=lab.getDoctor().getFirstName() %></td>
+										<td><%=lab.getDoctor().getFirstName() + " " + lab.getDoctor().getLastName() %></td>
 										<td><%=lab.getLabName() %></td>
 										<td><%=lab.getTestFor() %></td>
 										<td><%=lab.getLabResult() %></td>
